@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document - StegoCloud</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>StegoCloud</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="upload.html" class="nav-link active">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload
+                </a>
+                <a href="access.html" class="nav-link">
+                    <i class="fas fa-key"></i> Access
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-content">
+                <h1><i class="fas fa-cloud-upload-alt"></i> Upload Document</h1>
+                <p>Securely upload and encrypt your documents with advanced steganography protection</p>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="upload-container">
+                <div class="upload-card">
+                    <div class="upload-header">
+                        <h2><i class="fas fa-shield-alt"></i> Secure Document Upload</h2>
+                        <p>Your document will be encrypted with AES-256 and the decryption key will be hidden in a stego-image</p>
+                    </div>
+
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>Drop your document here</h3>
+                            <p>or <span class="browse-link">browse files</span> to select from your computer</p>
+                            <div class="upload-info">
+                                <div class="info-item">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Supported: PDF, DOC, DOCX, TXT, JPG, PNG</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-weight-hanging"></i>
+                                    <span>Maximum size: 10MB</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Encrypted with AES-256</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" style="display: none;">
+                    </div>
+
+                    <div class="upload-details" id="uploadDetails" style="display: none;">
+                        <div class="file-preview">
+                            <div class="file-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="file-info">
+                                <h4 id="fileName"></h4>
+                                <p id="fileSize"></p>
+                                <div class="file-status">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Ready for encryption</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="upload-actions">
+                            <button class="btn btn-primary btn-large" id="uploadBtn">
+                                <i class="fas fa-lock"></i> Encrypt & Upload Document
+                            </button>
+                            <button class="btn btn-secondary" id="cancelBtn">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Information -->
+                <div class="security-info">
+                    <h3><i class="fas fa-shield-check"></i> Security Features</h3>
+                    <div class="security-grid">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <h4>AES-256 Encryption</h4>
+                                <p>Military-grade encryption standard</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-eye-slash"></i>
+                            <div>
+                                <h4>Steganography</h4>
+                                <p>Key hidden in innocent-looking image</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-user-shield"></i>
+                            <div>
+                                <h4>Zero-Knowledge</h4>
+                                <p>We never see your decryption keys</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Fast Processing</h4>
+                                <p>Encryption completed in seconds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-container">
+                <div class="success-card">
+                    <div class="success-header">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2>Upload Successful!</h2>
+                        <p>Your document has been encrypted and uploaded securely</p>
+                    </div>
+
+                    <div class="results-content">
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-link"></i>
+                                <span>Document Link</span>
+                            </div>
+                            <div class="result-value">
+                                <div class="link-container">
+                                    <input type="text" id="generatedLink" readonly>
+                                    <button class="btn btn-copy" id="copyLinkBtn">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-image"></i>
+                                <span>Stego-Image</span>
+                            </div>
+                            <div class="result-value">
+                                <button class="btn btn-download" id="downloadStegoBtn">
+                                    <i class="fas fa-download"></i> Download Stego-Image
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="security-warning">
+                        <div class="warning-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="warning-content">
+                            <h4>Important Security Notice</h4>
+                            <p>Both the document link and stego-image are required to access your file. Keep them safe and share them only with authorized recipients.</p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="uploadAnotherBtn">
+                            <i class="fas fa-plus"></i> Upload Another Document
+                        </button>
+                        <a href="access.html" class="btn btn-secondary">
+                            <i class="fas fa-key"></i> Access Documents
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works-section">
+            <div class="section-header">
+                <h2>How Document Upload Works</h2>
+                <p>Understanding the encryption and steganography process</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>File Selection</h3>
+                        <p>Choose your document from your device. We support various formats including PDF, Word documents, text files, and images.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AES-256 Encryption</h3>
+                        <p>Your document is encrypted using the industry-standard AES-256 encryption algorithm, ensuring maximum security.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Key Generation</h3>
+                        <p>A unique decryption key is generated and embedded into a stego-image using advanced steganography techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Secure Storage</h3>
+                        <p>The encrypted document is stored on our secure servers, while the stego-image is provided to you for safekeeping.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner-icon">
+                <i class="fas fa-shield-alt fa-spin"></i>
+            </div>
+            <h3>Encrypting Your Document</h3>
+            <p>Please wait while we secure your document with military-grade encryption...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="events.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

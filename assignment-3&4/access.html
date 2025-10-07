@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Document - StegoCloud</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>StegoCloud</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="upload.html" class="nav-link">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload
+                </a>
+                <a href="access.html" class="nav-link active">
+                    <i class="fas fa-key"></i> Access
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-content">
+                <h1><i class="fas fa-key"></i> Access Document</h1>
+                <p>Decrypt and access your secure documents using the document link and stego-image</p>
+            </div>
+        </section>
+
+        <!-- Access Section -->
+        <section class="access-section">
+            <div class="access-container">
+                <div class="access-card">
+                    <div class="access-header">
+                        <h2><i class="fas fa-unlock"></i> Document Decryption</h2>
+                        <p>Provide both the document link and stego-image to decrypt and access your file</p>
+                    </div>
+
+                    <div class="access-form">
+                        <div class="form-section">
+                            <div class="form-header">
+                                <h3><i class="fas fa-link"></i> Document Link</h3>
+                                <p>Enter the secure link provided when you uploaded the document</p>
+                            </div>
+                            <div class="form-group">
+                                <input type="url" id="documentLink" placeholder="https://stegocloud.com/document/abc123..." class="form-input">
+                                <div class="input-icon">
+                                    <i class="fas fa-link"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-header">
+                                <h3><i class="fas fa-image"></i> Stego-Image</h3>
+                                <p>Upload the stego-image containing the hidden decryption key</p>
+                            </div>
+                            <div class="image-upload-area" id="imageUploadArea">
+                                <div class="image-upload-content">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <h4>Upload Stego-Image</h4>
+                                    <p>Click here or drag and drop the stego-image file</p>
+                                    <div class="upload-hint">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>Only the original stego-image will work for decryption</span>
+                                    </div>
+                                </div>
+                                <input type="file" id="stegoImageInput" accept=".jpg,.jpeg,.png" style="display: none;">
+                            </div>
+                            
+                            <div class="image-preview" id="imagePreview" style="display: none;">
+                                <div class="preview-content">
+                                    <img id="previewImage" src="" alt="Stego-image preview">
+                                    <div class="preview-info">
+                                        <h4 id="imageName"></h4>
+                                        <p id="imageSize"></p>
+                                        <div class="preview-actions">
+                                            <button class="btn btn-secondary btn-small" id="changeImageBtn">
+                                                <i class="fas fa-edit"></i> Change
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-success btn-large" id="accessBtn">
+                                <i class="fas fa-unlock"></i> Decrypt & Access Document
+                            </button>
+                            <button class="btn btn-secondary" id="clearFormBtn">
+                                <i class="fas fa-eraser"></i> Clear Form
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Information -->
+                <div class="security-info">
+                    <h3><i class="fas fa-shield-check"></i> Access Security</h3>
+                    <div class="security-grid">
+                        <div class="security-item">
+                            <i class="fas fa-key"></i>
+                            <div>
+                                <h4>Two-Factor Access</h4>
+                                <p>Both link and stego-image required</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-eye-slash"></i>
+                            <div>
+                                <h4>Hidden Keys</h4>
+                                <p>Decryption keys embedded in images</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Fast Decryption</h4>
+                                <p>Access your files in seconds</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-user-shield"></i>
+                            <div>
+                                <h4>Secure Process</h4>
+                                <p>No keys stored on our servers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-container">
+                <div class="success-card">
+                    <div class="success-header">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2>Document Decrypted Successfully!</h2>
+                        <p>Your document has been decrypted and is ready for download</p>
+                    </div>
+
+                    <div class="results-content">
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Document Name</span>
+                            </div>
+                            <div class="result-value">
+                                <span id="decryptedFileName">document.pdf</span>
+                            </div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>File Size</span>
+                            </div>
+                            <div class="result-value">
+                                <span id="decryptedFileSize">2.5 MB</span>
+                            </div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-download"></i>
+                                <span>Download</span>
+                            </div>
+                            <div class="result-value">
+                                <button class="btn btn-download btn-large" id="downloadDecryptedBtn">
+                                    <i class="fas fa-download"></i> Download Document
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="security-notice">
+                        <div class="notice-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="notice-content">
+                            <h4>Download Complete</h4>
+                            <p>Your document has been successfully decrypted and downloaded. The file is now available on your device.</p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="accessAnotherBtn">
+                            <i class="fas fa-plus"></i> Access Another Document
+                        </button>
+                        <a href="upload.html" class="btn btn-secondary">
+                            <i class="fas fa-upload"></i> Upload New Document
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works-section">
+            <div class="section-header">
+                <h2>How Document Access Works</h2>
+                <p>Understanding the decryption and access process</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Provide Credentials</h3>
+                        <p>Enter the document link and upload the stego-image that were provided when the document was uploaded.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Key Extraction</h3>
+                        <p>Our system extracts the hidden decryption key from the stego-image using advanced steganography algorithms.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Document Decryption</h3>
+                        <p>The encrypted document is decrypted using the extracted key and AES-256 decryption algorithms.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Secure Download</h3>
+                        <p>The decrypted document is prepared for secure download to your device.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="troubleshooting-section">
+            <div class="section-header">
+                <h2>Having Trouble Accessing Your Document?</h2>
+                <p>Common issues and solutions</p>
+            </div>
+            
+            <div class="troubleshooting-grid">
+                <div class="troubleshooting-item">
+                    <div class="trouble-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4>Invalid Link</h4>
+                    <p>Make sure you're using the exact link provided during upload. Links are case-sensitive and must be complete.</p>
+                </div>
+                
+                <div class="troubleshooting-item">
+                    <div class="trouble-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h4>Wrong Stego-Image</h4>
+                    <p>Only the original stego-image will work. Make sure you're uploading the exact file downloaded during upload.</p>
+                </div>
+                
+                <div class="troubleshooting-item">
+                    <div class="trouble-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Expired Link</h4>
+                    <p>Document links may expire after a certain period. Contact the document owner for a new link if needed.</p>
+                </div>
+                
+                <div class="troubleshooting-item">
+                    <div class="trouble-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Security Error</h4>
+                    <p>If you receive a security error, verify that both the link and stego-image are from the same upload session.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner-icon">
+                <i class="fas fa-key fa-spin"></i>
+            </div>
+            <h3>Decrypting Your Document</h3>
+            <p>Please wait while we extract the key and decrypt your document...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="events.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

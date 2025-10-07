@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StegoCloud - Test Interactive Features</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Override the opacity issue temporarily */
+        .feature-card {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        .step {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+        
+        /* Test styles */
+        .test-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .test-button {
+            background: #4f46e5;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>StegoCloud</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="upload.html" class="nav-link">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload
+                </a>
+                <a href="access.html" class="nav-link">
+                    <i class="fas fa-key"></i> Access
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Test Section -->
+        <section class="test-section">
+            <h2>Interactive Features Test</h2>
+            <p>Test all the event listeners and animations</p>
+            
+            <button class="test-button" onclick="testInteractions()">Test All Interactions</button>
+            <button class="test-button" onclick="console.log('Button clicked!')">Console Test</button>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="section-header">
+                <h2>Why Choose StegoCloud?</h2>
+                <p>Advanced security features that protect your documents like never before</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-tooltip="Military-grade security for your documents">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Military-Grade Encryption</h3>
+                    <p>Your documents are encrypted using AES-256 encryption.</p>
+                </div>
+                
+                <div class="feature-card" data-tooltip="Hidden keys in innocent images">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>Steganography Protection</h3>
+                    <p>Decryption keys are hidden within images.</p>
+                </div>
+                
+                <div class="feature-card" data-tooltip="Two-factor authentication system">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>Two-Factor Access</h3>
+                    <p>Requires both document link AND stego-image.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="section-header">
+                <h2>How StegoCloud Works</h2>
+                <p>Simple steps to secure document sharing</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Your Document</h3>
+                        <p>Select your document and upload it securely.</p>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Automatic Encryption</h3>
+                        <p>Your document is encrypted with AES-256.</p>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="events.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function testInteractions() {
+            console.log('Testing all interactions...');
+            
+            // Test feature cards
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                    card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
+                    setTimeout(() => {
+                        card.style.transform = 'translateY(0) scale(1)';
+                        card.style.boxShadow = '';
+                    }, 1000);
+                }, index * 200);
+            });
+            
+            console.log('Feature card animations triggered');
+        }
+        
+        // Additional debugging
+        window.addEventListener('load', () => {
+            console.log('Window loaded');
+            console.log('Feature cards found:', document.querySelectorAll('.feature-card').length);
+            console.log('Nav links found:', document.querySelectorAll('.nav-link').length);
+            console.log('Buttons found:', document.querySelectorAll('.btn, .test-button').length);
+        });
+    </script>
+</body>
+</html>
